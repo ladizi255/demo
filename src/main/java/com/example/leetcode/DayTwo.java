@@ -7,6 +7,7 @@ public class DayTwo {
     public static ListNode addTwoNum(ListNode l1, ListNode l2){
 
         ListNode a = new ListNode(0);//结果
+        ListNode curr = a;
         int carry = 0;// 进位值
 
         while (l1 != null || l2 != null){
@@ -17,18 +18,18 @@ public class DayTwo {
 
             carry = sum / 10;//进位
 
-            a.next = new ListNode(sum % 10);
-            a = a.next;
+            curr.next = new ListNode(sum % 10);
+            curr = curr.next;
 
             if (l1 != null) l1 = l1.next;
             if (null != l2) l2 = l2.next;
         }
 
         if (carry > 0){
-            a.next = new ListNode(carry);
+            curr.next = new ListNode(carry);
         }
 
-        return a;
+        return a.next;
     }
 
     public static void main(String[] args) {
